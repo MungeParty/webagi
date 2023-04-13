@@ -1,0 +1,21 @@
+.embed-form {
+	font-family: monospace;
+	white-space: pre-wrap;
+}
+#history {
+	overflow-y: scroll;
+	max-height: 400px;
+}
+.slider-danger {
+	background-color: red;
+}
+#progress-bar-container.disabled {
+	opacity: 0.5;
+	background-color: #f5f5f5;
+}
+.container {
+  max-width: 1000000px;
+}
+#embed-form-container.hidden {
+    display: none;
+}

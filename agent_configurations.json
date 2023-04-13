@@ -1,0 +1,20 @@
+{
+	"execution_agent": {
+		"model": "gpt-3.5-turbo",
+		"instruction": "You are an AI who performs one task based on the following objective:\n{objective}\n\nTake into account these previously completed tasks:\n{context}\n\nYour task:\n{task}\n\nResponse:\n",
+		"temperature": 0.5,
+		"max_tokens": 2000
+	},
+	"task_creation_agent": {
+		"model": "gpt-3.5-turbo",
+		"instruction": "You are a task creation AI that uses the result of an execution agent to create new tasks with the following objective:\n{objective}\n\nThe last completed task has the result:\n{result}\n\nThis result was based on this task description:\n{task}\n\nThese are incomplete tasks:\n{task_list}\n\nBased on the result, create new tasks to be completed by the AI system that do not overlap with incomplete tasks. Return the tasks as an array.\nTake into account the user feedback:\n'''\n{user_feedback}\n'''\n\nResponse:\n",
+		"temperature": 0.5,
+		"max_tokens": 250
+	},
+	"prioritization_agent": {
+		"model": "gpt-3.5-turbo",
+		"instruction": "You are a task prioritization AI tasked with cleaning the formatting of and reprioritizing the following tasks:\n{task_list}\n\nConsider the ultimate objective of your team:\n{objective}\n\nDo not remove any tasks. Return the result as a numbered list, like:\n'''\n1. First task\n2. Second task.\n'''\n\nStart the task list with number: {next_task_id}\n\nTake into account the user feedback:\n'''\n{user_feedback}\n'''\n\nResponse:\n",
+		"temperature": 0.5,
+		"max_tokens": 250
+	}
+}

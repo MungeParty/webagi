@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AI Task Manager</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+	<div class="container">
+		<h1>AI Task Manager</h1>
+		<div id="progress-bar-container" class="mt-3 disabled">
+			<div class="progress">
+				<div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+			<p id="status-text">Status: Idle</p>
+			<p id="time-remaining">Time Remaining: <span id="time-remaining-value">0</span> seconds</p>
+			<p id="average-iteration-time">Average Iteration Time: <span id="average-iteration-time-value">0</span> seconds</p>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h2>User Controls</h2>
+				<h3>Objective</h3>
+				<input type="text" id="objective-input" class="form-control">
+				<h3>User Feedback</h3>
+				<textarea id="feedback-input" class="form-control" rows="4" cols="50"></textarea>
+				<h3>Iterations</h3>
+				<input type="range" id="iterations-slider" class="form-control-range" min="0" max="50" value="0">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="unlimited-checkbox">
+                    <label class="form-check-label" for="unlimited-checkbox">
+                        Unlimited iterations
+                    </label>
+                </div>
+				<p id="iterations-label">Iterations: <span id="iterations-value">0</span></p>
+				<h3>Control</h3>
+				<button id="start-button" class="btn btn-primary">Start</button>
+				<button id="stop-button" class="btn btn-danger">Stop</button>
+				<a href="#" id="open-embed-form">Open Embedding Form</a>
+				<div id="embed-form-container" style="display: none;">
+                    <h3>Submit Text Block as Embedding</h3>
+					<textarea id="embedding-input" class="form-control embed-form" rows="4" cols="50"></textarea>
+					<button id="submit-embedding" class="btn btn-secondary mt-2">Submit</button>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h2>Current Task List</h2>
+				<div id="task-list"></div>
+			</div>
+			<div class="col-md-4">
+				<h2>History of Updates</h2>
+				<div id="history"></div>
+            </div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
